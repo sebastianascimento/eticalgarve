@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Mountain Landscape",
+    "description": "A majestic mountain range bathed in the golden light of sunset.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtAgeA2NenTS1-mSJ3S3JB_2fJ1qc2KxQXeKl_QPxnSkAFYTBOwXGyTH4Tfg&s"
+  },
+  {
+    "title": "Crystal Clear Lake",
+    "description": "A serene lake reflecting the clear blue sky and fluffy white clouds.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPMdw0-UIhos7bbVB2AQ16EkmHPwzZeQilXrKkt-voODlSrD-9lUAYAYBvA&s"
+  },
+  {
+    "title": "Vibrant Cityscape",
+    "description": "A bustling cityscape with towering skyscrapers and colorful lights.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsmf_JLbHtbF3ummLdxTz6m26Q0XC9BDJ87YcS77eMsV5dOu7k92R7U4zsZw&s"
+  },
+  {
+    "title": "Cozy Cabin",
+    "description": "A charming cabin nestled amongst the trees, perfect for a winter getaway.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBtQ9T1-ENZbi91V9AI5_Y09hpATdH3lLlKw&s"
+  },
+  {
+    "title": "Tropical Beach",
+    "description": "A pristine beach with white sand, turquoise water, and swaying palm trees.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPemolq_TILwG0ZND446euHC9NuzR9AnV7nA&s"
+  },
+  {
+    "title": "Starry Night Sky",
+    "description": "A breathtaking night sky filled with millions of twinkling stars.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkM5YtLuyuqgPNtqFqRKuJ51b7UU7RnD-ByA&s"
+  },
+  {
+    "title": "Ancient Ruins",
+    "description": "Mysterious ruins of an ancient civilization, shrouded in history and mystery.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvP81XBHMVF8YrhHd7MVYj8J8vd9btIPq9og&s"
+  },
+  {
+    "title": "Blooming Flowers",
+    "description": "A field of vibrant flowers in full bloom, creating a tapestry of color.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6gwHea1vLkHv0TMXYg_Mpt7kxEUqwUI5p5Q&s"
+  },
+  {
+    "title": "Waterfall Cascade",
+    "description": "A powerful waterfall cascading down a steep cliff, surrounded by lush greenery.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg83JL9xoh-0i8C7ImwOKiIHJvTlq6wHkrTkSzBxKwIQ&s"
+  },
+  {
+    "title": "Desert Landscape",
+    "description": "A vast and arid desert landscape with towering dunes and a vibrant sunset.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOHomRHgqG4TNKB_5IuRMvNgEVA-zhzIVOWw&s"
+  }
+]

@@ -1,0 +1,17 @@
+
+
+@media screen  and (max-width: 520px) {
+    img {
+        max-width: 500px;
+
+    }     
+
+    .all {
+        display: flex;
+        flex-direction: column;
+        max-width: 320px;
+        background-color: #cccccc;
+        padding: 20px;
+        gap: 10px;
+    }0
+}

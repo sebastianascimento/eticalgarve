@@ -1,0 +1,41 @@
+:root {
+    --color-primary: #0ff126;
+    --color-secondary: #2c3e50;
+    --color-text: #212121;
+    --font-family: system-ui, sans-serif;
+    --speed: 0.3s;
+
+    --galery-width: 200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--color-text);
+}
+
+html,
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+    perspective: 800px;
+}
+
+web-gallery {
+    position: absolute;
+    transform: rotateY(0);
+    transition: transform var(--speed) ease-in-out, opacity var(--speed) ease-in-out;
+}
+
+web-gallery-detail {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transform: rotateY(180deg);
+    transition: transform var(--speed) ease-in-out,
+        opacity var(--speed) ease-in-out;
+}

@@ -1,0 +1,20 @@
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.task-item.completed {
+    text-decoration: line-through;
+}
+.task-toggle {
+    margin-right: 10px;
+}
+.urgency {
+    margin-left: 10px;
+    font-weight: bold;
+}
