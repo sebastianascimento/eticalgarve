@@ -412,47 +412,165 @@ class CheckItem extends Item {
 customElements.define("check-item", CheckItem);
 
 
-const todoModelTemplate = document.createElement("template");
-todoModelTemplate.innerHTML = `
+/**TODO MODAL */
+const todoModalTemplate = document.createElement("template");
+todoModalTemplate.innerHTML = `
 <style>
     @import url("system.css");
 
-    .buttonplus {
-        width: 15%;
-        background-color: transparent;
-        margin-left: 350px;
+    :host, #overlay {
+        position: absolute;
+        inset: 0;
     }
-    .plus {
-        display: flex;
+
+    :host {
+        display: none;
         justify-content: center;
         align-items: center;
-        margin-left: 100px;
     }
-</style>
-<div class="buttonplus">
-    <div class="footerplus">
-        <label></label>
-    <div class="plus">
-        <svg width="100%" height="100%" viewBox="0 0 24.342 24.342" ><path d="m14.784 9.5578v-9.5578h-5.226v9.5578h-9.5578v5.2261h9.5578v9.5578h5.226v-9.5578h9.5578v-5.2261z" /></svg>
-    </div>
-</div>
 
+    #overlay {
+        background-color: var(--color-text-dark);
+        mix-blend-mode: multiply;
+        backdrop-filter: blur(3px);
+        
+        transition: opacity var(--speed) ease-in-out;
+    }
+
+    #dialog {
+        display: flex;
+        width: 100%;
+        max-width: 400px;
+        flex-direction: column;
+        position: absolute;
+        background-color: var(--color-primary);
+        padding: var(--v-padding) var(--h-padding);
+        gap: var(--gap);
+        filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+        transition: transform var(--speed) ease-in-out, opacity var(--speed) ease;
+        transform: translateY(50px);
+    }
+
+    h2, input {
+        margin: 0;
+        color: var(--color-text-dark);
+    }
+    h2 {
+        font-size: 42px;
+        font-weight: 500;
+    }
+
+    input {
+        flex: 1;
+        border: 1px solid var(--color-text-dark);
+        padding: 15px 10px;
+        font-size: 18px;
+    }
+    input:focus{
+        outline: none;
+    }
+
+    #actions-container {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--gap);
+        flex: 1;
+        margin-top: 20px;
+    }
+
+    button {
+        border: none;
+        flex: 1;
+        background-color: transparent;
+        height: 48px;
+        padding: 10px;
+        cursor: pointer;
+    }
+    button:active svg {
+        transform: scale(0.9);
+    }
+    #confirm {
+        background-color: var(--color-terciary);
+    }
+
+</style>
+
+<div id="overlay"></div>
+
+<div id="dialog">
+    <h2>Modal Title</h2>
+    <input type="text">
+    <div id="actions-container">
+        <button id="cancel">
+            <svg width="100%" height="100%" viewBox="0 0 24.342 24.342" fill="var(--color-text-dark)">
+                <path d="m12.171 8.4754-8.4754-8.4754-3.6954 3.6954 8.4754 8.4754-8.4754 8.4754 3.6954 3.6954 8.4754-8.4754 8.4754 8.4754 3.6954-3.6954-8.4754-8.4754 8.4754-8.4754-3.6954-3.6954z"/>
+            </svg>
+        </button>
+        <button id="confirm">
+            <svg width="100%" height="100%" viewBox="0 0 24.342 24.342" fill="var(--color-text-light)">
+                <path d="m20.497 2.6458 3.8447 3.865-15.105 15.185-9.2366-9.2856 3.8447-3.865 5.3919 5.4205z"/>
+            </svg>
+        </button>
+    </div>
+</div>  
 `;
 
-class TodoModel extends HTMLElement {
-
+class TodoModal extends HTMLElement {
+    
     shadowRoot;
-    #buttonplus;
+    #confirmButton;
     constructor() {
         super();
 
-        this.shadowRoot = this.attachShadow({mode: 'closed'});
-        this.shadowRoot.append(todoModelTemplate.content.cloneNode(true));
-        console.log(this.shadowRoot);
+        this.shadowRoot = this.attachShadow({mode: "closed"});
+        this.shadowRoot.append(todoModalTemplate.content.cloneNode(true));
 
-        this.#buttonplus = this.shadowRoot.querySelector(".buttonplus");
+        this.shadowRoot.querySelector("#overlay").onclick = () => {
+            this.hide();
+        }
+        this.shadowRoot.querySelector("#cancel").onclick = () => {
+            this.hide();
+        }
 
-        this.#buttonplus.onclick = () => this.dispatchEvent(new CustomEvent("clicked"));
+        const input = this.shadowRoot.querySelector("input");
+        if (input) {
+            input.onkeyup = (ev) => {
+                if(ev.key === "Enter") {
+                   this.#confirmButton .click();
+                }
+            }
+      
+        }
+
+          this.#confirmButton = this.shadowRoot.querySelector("#confirm");
+         this.#confirmButton.onclick = () => {
+
+            if(input.value.trim() === "") return;
+
+            this.dispatchEvent(new CustomEvent("confirm", {
+                detail: {
+                    value: input.value
+                }
+            }));
+            this.hide();
+        }
+    }
+
+    show(state) {
+
+        let title;
+        if(state === "tasks") {
+            title = "Add Task";
+        } else {
+            title = "Add Item";
+        }
+        this.shadowRoot.querySelector("h2").innerText = title;
+        this.style.display = "flex";
+    }
+
+    hide() {
+        this.shadowRoot.querySelector("input").value = "";
+        this.style.display = "none";
     }
 }
-customElements.define("todo-model" , TodoModel);
+customElements.define("todo-modal", TodoModal);

@@ -1,34 +1,17 @@
 export default class TodoModel {
-    #tasks = [
-        {
-            title: "Task 1",
-            items: [
-                {
-                    title: "Item 1",
-                    checked: "false"
-                },
-                {
-                    title: "Item 2",
-                    checked: "false"
-                },
-                {
-                    title: "Item 3",
-                    checked: "false"
-                }
-            ]
-        }
-    ];
+    #tasks = [];
 
     constructor() {
-
         if(!localStorage.getItem("todos")){ 
             localStorage.setItem("todos", JSON.stringify(this.#tasks));
+        } else {
+            this.#tasks = JSON.parse(localStorage.getItem("todos"));
         }
     }
 
     /** TASKS */
     addTask(task) {
-        this.#tasks.push(task);
+        this.#tasks.push({title: task, items:[]});
         this.#updateLocalStorage();
     }
     deleteTask(index) {
@@ -41,15 +24,16 @@ export default class TodoModel {
 
     /** ITEMS */
     addItem(taskIndex, item) {
-        this.#tasks[taskIndex].items.push(item);
+        this.#tasks[taskIndex].items.push({title:item, checked:"false"});
         this.#updateLocalStorage();
     }
     deleteItem(taskIndex, itemIndex) {
-
         this.#tasks[taskIndex].items.splice(itemIndex, 1);
         this.#updateLocalStorage();
     }
     updateItem(taskIndex, itemIndex, val) {
+
+        console.log(this.#tasks);
         this.#tasks[taskIndex].items[itemIndex].checked = val;
         this.#updateLocalStorage();
     }
